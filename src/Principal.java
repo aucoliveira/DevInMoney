@@ -232,27 +232,9 @@ public class Principal {
 						
 					}
 				}while(true);
-					break;
+				break;
 				
 			case "4":
-								
-					do {
-						System.out.println("informe um ID de uma conta do tipo CONTA POUPANÇA!");
-						int idPoup = scanner.nextInt();
-						if (contaList.get(idPoup).getTipoConta().equalsIgnoreCase("Conta Poupança")) {
-							System.out.println("Informe o valor: ");
-							double valorInves = scanner.nextDouble();
-							System.out.println("Informe o juros: ");
-							double juros = scanner.nextDouble();
-							System.out.println("Informe a quantidade de meses: ");
-							int periodo = scanner.nextInt();
-							((ContaPoupanca) contaList.get(idPoup)).rendimento(valorInves, juros, periodo);
-							break;
-						}else {
-							System.out.println("Favor informe uma conta do Tipo CONTA INVESTIMENTO!");
-						}
-					}while(true);
-			case "5":
 				listContas();
 				System.out.println("Informe o ID de qual conta deseja alterar: ");
 				int idAltera = scanner.nextInt();
@@ -554,7 +536,8 @@ public class Principal {
 				
 				opc = null;
 				do {
-				System.out.println("Deseja realizar algum investimento ou simular? Para investir digite 1; para simular digite 2; para sair digite 3;; ");
+				System.out.println("Deseja realizar algum investimento ou simular? Para investir digite 1; "
+						+ "para simular digite 2; para sair digite 3;; ");
 				opc = scanner.next();
 				
 				}while(!(opc.equalsIgnoreCase("1") || opc.equalsIgnoreCase("2") || opc.equalsIgnoreCase("3")));
@@ -569,57 +552,61 @@ public class Principal {
 					
 					if (opc.equalsIgnoreCase("1")) {
 						 valor = 0;
-						 	boolean	teste = false;
+						 	
 							do {
 								try {
 									System.out.println("Quanto deseja investir?");
 									valor = scanner.nextDouble();
+									break;
 								}catch(Exception e) {
-									teste = true;
+									
 								}
 								
-							}while(teste);
+							}while(true);
 							contaInves.iniciante(valor);
 							
 					}else if (opc.equalsIgnoreCase("2")) {
 						 valor = 0;
-						 	boolean	teste = false;
+						 	
 							do {
 								try {
 									System.out.println("Quanto deseja investir?");
 									valor = scanner.nextDouble();
+									break;
 								}catch(Exception e) {
-									teste = true;
+									
 								}
 								
-							}while(teste);
+							}while(true);
 							contaInves.conservador(valor);
 							
 					}if (opc.equalsIgnoreCase("3")) {
 						 valor = 0;
-						 	boolean	teste = false;
+						 	
 							do {
 								try {
 									System.out.println("Quanto deseja investir?");
 									valor = scanner.nextDouble();
+									break;
 								}catch(Exception e) {
-									teste = true;
+									
 								}
 								
-							}while(teste);
+							}while(true);
 							contaInves.agressivo(valor);
 				} else if (opc.equalsIgnoreCase("2")) {
 					 valor = 0;
-					 	boolean	teste = false;
+					 	
 						do {
 							try {
 								System.out.println("Quanto deseja investir?");
 								valor = scanner.nextDouble();
+								break;
 							}catch(Exception e) {
-								teste = true;
+							
 							}
 							
-						}while(teste);
+						}while(true);
 						contaInves.simulaInvestimento(valor);
 				}else {
 				}
