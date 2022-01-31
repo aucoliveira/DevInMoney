@@ -23,6 +23,16 @@ public class Conta {
 	protected  double saldo;
 	protected ArrayList<ExtratoTransferencia> transferencias = new ArrayList<ExtratoTransferencia>();
 	protected ExtratoTransferencia transferencia = new ExtratoTransferencia();
+	protected ArrayList<String> operacoes = new ArrayList<String>();
+	
+	public ArrayList<String> getOperacoes() {
+		return operacoes;
+	}
+
+	public void setOperacoes(ArrayList<String> operacoes) {
+		this.operacoes = operacoes;
+	}
+
 	public ArrayList<ExtratoTransferencia> getTransferencias() {
 		return transferencias;
 	}
@@ -126,16 +136,12 @@ public class Conta {
 		return extrato;
 	}
 	
-	public void transferir(float valor, Conta contaRecebe ) throws SaldoInsuficienteException {
-		
-		
-	}
 	//public Conta(String nome, String cpf, float rendaMensal, Agencia agencia, float saldo)
-	public  void alteraCad(String nome, double rendaMensal, Agencia agencia, float saldo) {
+	public  void alteraCad (String nome, double rendaMensal, Agencia agencia) {
 		this.nome = nome;
 		this.rendaMensal = rendaMensal;
 		this.agencia =agencia;
-		this.saldo = saldo;
+		
 		
 	}
 
@@ -146,8 +152,7 @@ public class Conta {
 	public void imprimiTransferencia() {
 		
 	}
+	
 
 
-	
-	
 }

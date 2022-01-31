@@ -223,10 +223,16 @@ public class Principal {
 						break;
 					}else if (op.equalsIgnoreCase("3")) {
 						listContas();
-						operacoesCliente();
-						break;
+						do {
+							System.out.println("informe um ID de uma conta do tipo CONTA POUPANÇA!");
+							int idPoup = scanner.nextInt();
+							System.out.println("contaList.get(idPoup).getOperacoes()");
+						}while(true);
+						
+						
 					}
 				}while(true);
+					break;
 				
 			case "4":
 								
@@ -271,7 +277,7 @@ public class Principal {
 					agencia = Agencia.SAO_JOSE;
 				}
 				System.out.println("--------------------------------------------------------------");
-				System.out.println("Agora vamos gerar o número da sua CONTA CORRENTE.");
+				System.out.println("Agora vamos gerar o número da sua CONTA.");
 				conta.geraConta();
 				System.out.println("O número da sua conta é: "+conta.getConta());
 				System.out.println("--------------------------------------------------------------");
@@ -430,7 +436,7 @@ public class Principal {
 				do {
 					System.out.println("Deseja verificar quanto será seu rendimento? Se sim digete 1; não digite 2; ");
 					opc = scanner.next();
-				System.out.println("Conta finalizada com sucesso!");
+				
 				}while(!(opc.equalsIgnoreCase("1") || opc.equalsIgnoreCase("2")));
 				
 				if ( opc.equalsIgnoreCase("1")) {

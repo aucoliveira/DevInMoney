@@ -1,6 +1,7 @@
 package transferencias;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ public class ExtratoTransferencia {
 	private Conta contaOrigem;
 	private Conta contaDestino;
 	private double valor;
-	private LocalDate data;
+	private LocalDateTime data;
 	
 	public ExtratoTransferencia() {
 		
@@ -27,7 +28,7 @@ public class ExtratoTransferencia {
 		this.contaOrigem = contaOrigem;
 		this.contaDestino =  contaDestino;
 		this.valor = valor;
-		this.data = LocalDate.now();
+		this.data = LocalDateTime.now();
 	}
 
 	public Conta getContaOrigem() {
@@ -54,11 +55,11 @@ public class ExtratoTransferencia {
 		this.valor = valor;
 	}
 
-	public LocalDate getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	

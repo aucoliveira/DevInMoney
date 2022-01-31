@@ -70,7 +70,8 @@ public class ContaCorrente extends Conta{
 		}else {
 			this.saldo -= valor;
 		}
-		
+		operacoes.add(conta+"  |  "+"  SAQUE  "+"   |   "+valor+
+				"  |  "+data);
 		
 	}
 	
@@ -82,6 +83,8 @@ public class ContaCorrente extends Conta{
 		operacoes.add(agencia+"  |  "+conta+
 				"  |  "+deposito+"  |  "+data);
 		this.saldo += deposito;
+		operacoes.add(conta+"  |  "+"  DEPOSITO  "+"   |   "+deposito+
+				"  |  "+data);
 	}
 	
 	@Override

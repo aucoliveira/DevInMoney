@@ -116,6 +116,8 @@ public class ContaPoupanca extends Conta{
 		if (saldoTemp < 0) {
 			throw new SaldoInsuficienteException("Você não possui saldo suficiente");
 		}
-		this.saldo -= valor;			
+		this.saldo -= valor;
+		operacoes.add(conta+"  |  "+"  SAQUE  "+"   |   "+valor+
+				"  |  "+data);
 	}
 }
