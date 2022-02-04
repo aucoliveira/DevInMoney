@@ -12,7 +12,7 @@ public class ContaCorrente extends Conta {
 	private final String tipoConta = "Conta Corrente";
 	private LocalDate data = LocalDate.now();
 	private ArrayList<String> operacoes = new ArrayList<String>();
-
+	private double saldo = 0;
 	public ArrayList<String> getOperacoes() {
 		return operacoes;
 	}
@@ -86,8 +86,12 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public double saldo() {
-		this.saldo += chequeEspecial;
+		if (saldo == 0) {
+			this.saldo += chequeEspecial;
+			return saldo;
+		}
 		return saldo;
+		
 	}
 
 	@Override

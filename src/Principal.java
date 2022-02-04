@@ -52,7 +52,7 @@ public class Principal {
 						opcao = scanner.next();
 
 					} catch (InputMismatchException e) {
-
+						System.out.println("Informe um valor válido.");
 					}
 
 				} while (!(opcao.equalsIgnoreCase("1") || opcao.equalsIgnoreCase("2") || opcao.equalsIgnoreCase("3")));
@@ -296,6 +296,7 @@ public class Principal {
 					break;
 				}
 				System.out.println("--------------------------------------------------------------------");
+				break;
 			case "3":
 				String op = null;
 				do {
