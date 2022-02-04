@@ -120,6 +120,8 @@ public class Conta {
 		this.nome = nome;
 		this.rendaMensal = rendaMensal;
 		this.agencia = agencia;
+		geraConta();
+		System.out.println("Sua nova conta é: "+conta);
 
 	}
 

@@ -13,17 +13,14 @@ import validador.ValidaCPF;
 
 public class Principal {
 	public static Scanner scanner = new Scanner(System.in);
-	public static ArrayList<Conta> contaList = new ArrayList<Conta>();
-	static ContaCorrente conta = new ContaCorrente();
-	static ContaPoupanca contaPoupanca = new ContaPoupanca();
-	static ContaInvestimento contaInves = new ContaInvestimento();
+	public static ArrayList<Conta> contaList = new ArrayList<Conta>();	
 	static ValidaCPF validaCpf = new ValidaCPF();
-
+	static ContaInvestimento contaInveste = new ContaInvestimento();
+	static ContaPoupanca contaPoup = new ContaPoupanca();
 	public static void main(String[] args) throws SaldoInsuficienteException {
 		// TODO Auto-generated method stub
 
 		menu();
-
 	}
 
 	public static void menu() throws SaldoInsuficienteException {
@@ -59,12 +56,15 @@ public class Principal {
 
 				if (opcao.equalsIgnoreCase("1")) {
 					System.out.println("--------------- Conta Corrente ----------------------");
-					criaConta(conta);
+					ContaCorrente contaCorrente = new ContaCorrente();
+					criaConta(contaCorrente);
 				} else if (opcao.equalsIgnoreCase("2")) {
 					System.out.println("--------------- Conta Poupança ----------------------");
+					ContaPoupanca contaPoupanca = new ContaPoupanca();
 					criaConta(contaPoupanca);
 				} else if (opcao.equalsIgnoreCase("3")) {
 					System.out.println("--------------- Conta de Investimento  --------------");
+					ContaInvestimento contaInves = new ContaInvestimento();
 					criaConta(contaInves);
 				}
 
@@ -107,7 +107,7 @@ public class Principal {
 							}
 							int idDeposito = 0;
 							do {
-								try {	
+								try {
 									System.out.println("Informe o ID de qual conta deseja realizar o deposito: ");
 									idDeposito = scanner.nextInt();
 									break;
@@ -125,14 +125,15 @@ public class Principal {
 									System.out.println("Informe um valor válido.");
 								}
 							} while (true);
-							
+
 							idDeposito -= 1;
 							contaList.get(idDeposito).depositar(valorDeposito);
 							break;
 
 						case "3":
 							System.out.println("Vamos te mostrar os tipos de investimento");
-							contaInves.consultaInveste();
+							
+							contaInveste.consultaInveste();
 							System.out.println(
 									"Deseja realizar algum investimento?\nDigite 1 para sim;\n Digite 2 para não;");
 							opc = scanner.next();
@@ -144,13 +145,14 @@ public class Principal {
 									int idInves = 0;
 									do {
 										try {
-											System.out.println("informe um ID de uma conta do tipo CONTA INVESTIMENTO!");
+											System.out
+													.println("informe um ID de uma conta do tipo CONTA INVESTIMENTO!");
 											idInves = scanner.nextInt();
 											break;
 										} catch (Exception e) {
-											
+
 										}
-									
+
 										idInves -= 1;
 										if (contaList.get(idInves).getTipoConta()
 												.equalsIgnoreCase("Conta Investimento")) {
@@ -163,7 +165,7 @@ public class Principal {
 										}
 									} while (true);
 								} else if (opc.equalsIgnoreCase("2")) {
-									 int idInves = 0;
+									int idInves = 0;
 									do {
 										System.out.println("informe um ID de uma conta do tipo CONTA INVESTIMENTO!");
 										idInves = scanner.nextInt();
@@ -235,7 +237,7 @@ public class Principal {
 								}
 
 							} while (true);
-							System.out.println(contaPoupanca.rendimento(valor, juros, periodo));
+							System.out.println(contaPoup.rendimento(valor, juros, periodo));
 
 							break;
 						case "5":
@@ -244,15 +246,15 @@ public class Principal {
 							int idSaldo = 0;
 							do {
 								try {
-							
+
 									System.out.println("Favor informe o ID da conta: ");
 									idSaldo = scanner.nextInt();
 									break;
-								} catch(Exception e) {
+								} catch (Exception e) {
 									System.out.println("Favor informe um valor válido.");
 								}
 							} while (true);
-							
+
 							idSaldo -= 1;
 							System.out.println("--------------------------------------------------------------------");
 							System.out.println("-------------------------  Saldo  ----------------------------------");
@@ -389,11 +391,23 @@ public class Principal {
 						System.out.println("Favor digite os dados válidos.");
 					}
 				} while (true);
-
+				
+				
+				
+				/*
 				System.out.println("--------------------------------------------------------------");
 				System.out.println("Agora vamos gerar o número da sua CONTA.");
-				conta.geraConta();
-				System.out.println("O número da sua conta é: " + conta.getConta());
+				if (contaList.get(idAltera).getTipoConta().equalsIgnoreCase("Conta Corrente")) {
+					conta.geraConta();
+					System.out.println("O número da sua conta é: " + conta.getConta());
+				}else if (contaList.get(idAltera).getTipoConta().equalsIgnoreCase("Conta Poupança")) {
+					contaPoupanca.geraConta();
+					System.out.println("O número da sua conta é: " + contaPoupanca.getConta());
+				}else if (contaList.get(idAltera).getTipoConta().equalsIgnoreCase("Conta Investimento")) {
+					contaInves.geraConta();
+					System.out.println("O número da sua conta é: " + contaInves.getConta());
+				}
+				*/
 				System.out.println("--------------------------------------------------------------");
 				contaList.get(idAltera).alteraCad(nome, rendaMensal, agencia);
 				break;
@@ -476,7 +490,7 @@ public class Principal {
 		System.out.println("---------------------------------------------------------------");
 		System.out.println("------------ Relatório de contas no sistema -------------------");
 		System.out.println("---------------------------------------------------------------");
-		System.out.println("ID       CONTA      NOME          TIPO DE CONTA           VALOR");
+		System.out.println("ID       CONTA       NOME           TIPO DE CONTA           VALOR");
 		for (int i = 0; i < contaList.size(); i++) {
 
 			if (contaList.get(i).getTipoConta().equalsIgnoreCase("Conta Corrente")) {
@@ -518,7 +532,7 @@ public class Principal {
 				totalInvestido += ((ContaInvestimento) contaList.get(i)).getTotalInvestido();
 			}
 		}
-		System.out.println("O total investido é de R$:"+totalInvestido+" reais.");
+		System.out.println("O total investido é de R$:" + totalInvestido + " reais.");
 
 	}
 

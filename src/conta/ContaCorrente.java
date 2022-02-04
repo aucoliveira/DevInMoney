@@ -12,7 +12,19 @@ public class ContaCorrente extends Conta {
 	private final String tipoConta = "Conta Corrente";
 	private LocalDate data = LocalDate.now();
 	private ArrayList<String> operacoes = new ArrayList<String>();
-	private double saldo = 0;
+	
+	public ContaCorrente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ContaCorrente(String nome, String cpf, float rendaMensal, Agencia agencia, double saldo) {
+		super();
+		// TODO Auto-generated constructor stub
+		this.chequeEspecial += rendaMensal;
+	}
+	
+	
 	public ArrayList<String> getOperacoes() {
 		return operacoes;
 	}
@@ -38,17 +50,6 @@ public class ContaCorrente extends Conta {
 	public void setRendaMensal(double rendaMensal) {
 		this.rendaMensal = rendaMensal;
 		this.chequeEspecial = rendaMensal;
-	}
-
-	public ContaCorrente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public ContaCorrente(String nome, String cpf, float rendaMensal, Agencia agencia, double saldo) {
-		super();
-		// TODO Auto-generated constructor stub
-		this.chequeEspecial += rendaMensal;
 	}
 
 	@Override
@@ -86,12 +87,11 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public double saldo() {
-		if (saldo == 0) {
-			this.saldo += chequeEspecial;
-			return saldo;
-		}
-		return saldo;
 		
+		this.saldo += chequeEspecial;
+		this.chequeEspecial = 0;
+		return saldo;
+
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public class ContaCorrente extends Conta {
 		System.out.println("-----------------------------------------------------------------");
 		System.out.println("-------------------- Extrato ------------------------------------");
 		System.out.println("-----------------------------------------------------------------");
-		System.out.println("Conta Origem ------ Conta Destino  ------ Valor ----- Data-------");
+		System.out.println("Conta Origem   ------    Conta Destino    ------   Valor   -----   Data  -------");
 		for (int i = 0; i < operacoes.size(); i++) {
 			System.out.println(operacoes.get(i));
 		}
