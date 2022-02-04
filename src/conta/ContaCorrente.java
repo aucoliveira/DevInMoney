@@ -120,6 +120,7 @@ public class ContaCorrente extends Conta {
 						transferencia.getContaOrigem().getConta() + "  |  " + transferencia.getContaDestino().getConta()
 								+ "  |  " + transferencia.getValor() + "  |  " + transferencia.getData());
 				this.saldo -= valor;
+				this.saldo -= rendaMensal;
 			} else {
 				System.out.println("Não pode realizar transferencias no final de semana.");
 			}
